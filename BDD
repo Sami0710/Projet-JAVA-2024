@@ -1,0 +1,44 @@
+CREATE TABLE Medecin (
+    idmedecin INT PRIMARY KEY,
+    nommedecin VARCHAR(255),
+    prenommedecin VARCHAR(255),
+    motdepassemedecin VARCHAR(255),
+    idemploye INT,
+    FOREIGN KEY (idemploye) REFERENCES Employe(Idemploye)
+);
+
+CREATE TABLE Patient (
+    idpatient INT PRIMARY KEY,
+    nompatient VARCHAR(255),
+    prenompatient VARCHAR(255),
+    motdepasse VARCHAR(255),
+    historique TEXT,
+    type_patient ENUM('Nouveau', 'Ancien')
+);
+
+CREATE TABLE Rendez_vous (
+    idrendezvous INT PRIMARY KEY,
+    date DATE,
+    salle VARCHAR(255),
+    idpatient INT,
+    idmedecin INT,
+    notes TEXT,
+    FOREIGN KEY (idpatient) REFERENCES Patient(idpatient),
+    FOREIGN KEY (idmedecin) REFERENCES Medecin(idmedecin)
+);
+
+CREATE TABLE Employe (
+    idemploye INT PRIMARY KEY
+);
+
+CREATE TABLE Administrateur (
+    idadministrateur INT PRIMARY KEY,
+    idemploye INT,
+    FOREIGN KEY (idemploye) REFERENCES Employe(Idemploye)
+);
+
+CREATE TABLE Creneau_horaire (
+    idcreneau INT PRIMARY KEY,
+    heure_debut TIME,
+    heure_fin TIME
+);
