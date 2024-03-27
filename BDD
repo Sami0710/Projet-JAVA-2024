@@ -1,3 +1,9 @@
+IMPORTANT : IL FAUT CREER LES CLES ETRANGERES A PART SI LE CODE NE FONCTIONNE PAS SUR MySQL.
+DONC IL FAUT SUPPRIMER LES "FOREIGN KEY" ET LES AJOUTER A PART AVEC LA COMMANDE EX : alter table rendez_vous add foreign key (idmedecin) references medecin(idmedecin);
+POUR TOUT LES CLES ETRANGERES
+
+
+
 CREATE TABLE Medecin (
     idmedecin INT PRIMARY KEY,
     nommedecin VARCHAR(255),
